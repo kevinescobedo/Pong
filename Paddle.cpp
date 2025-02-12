@@ -38,3 +38,16 @@ sf::Color Paddle::randomColor()
 
     return sf::Color(redValue, greenValue, blueValue);
 }
+
+std::ostream& operator <<(std::ostream& os, const Paddle& paddle)
+{
+    const sf::Vector2f position = paddle.getPosition();
+    const sf::Vector2f dimensions = paddle.getSize();
+    sf::Color paddleColor = paddle.getFillColor();
+
+    os<<"Position: ("<<position.x<<", "<<position.y<<")\n";
+    os<<"Dimensions: ("<<dimensions.x<<" x "<<dimensions.y<<")\n";
+    os<<"Color: (R: "<<+paddleColor.r<<", G: "<<+paddleColor.g<<", B: "<<+paddleColor.b<<")";
+
+    return os;
+}
