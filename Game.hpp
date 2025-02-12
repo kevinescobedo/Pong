@@ -1,14 +1,18 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <SFML/Window/Keyboard.hpp>
 #include <SFML/System/Vector2.hpp>
 #include "Window.hpp"
+#include "Paddle.hpp"
 #include <iostream>
 
 class Game
 {
 private:
     Window window;
+    Paddle leftPaddle;
+    Paddle rightPaddle;
 
 public:
     Game(unsigned int width, unsigned int height);

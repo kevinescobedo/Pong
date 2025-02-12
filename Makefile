@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-std=c++20 -Wpedantic -Wall -Wextra -Werror -Weffc++ -Wzero-as-null-pointer-constant
 OPTIMIZE=-O2
-SOURCES=Window.cpp Game.cpp main.cpp
+SOURCES=Window.cpp Paddle.cpp Game.cpp main.cpp
 OBJS=$(SOURCES:.cpp=.o)
 TARGET=pong
 LIBRARIES=-l sfml-graphics -l sfml-window -l sfml-system

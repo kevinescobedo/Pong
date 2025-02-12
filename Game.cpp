@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 Game::Game(unsigned int width, unsigned int height)
-:window("Pong", width, height)
+:window("Pong", width, height), leftPaddle(0, 0, width / 35.f, height / 3.f), rightPaddle(width - (width / 35.f), 0, width / 35.f, height / 3.f)
 {
 
 }
@@ -55,7 +55,48 @@ void Game::play()
             }
         }
 
+        const sf::Vector2u windowSize = window.getSize();
+        float paddleMovement = windowSize.y / 20.f;
+
+        float currentLeftY = leftPaddle.getPosition().y;
+        float currentRightY = rightPaddle.getPosition().y;
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            if(currentLeftY - paddleMovement >= 0)
+            {
+                leftPaddle.move(0, -paddleMovement);
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            if(currentLeftY + paddleMovement + leftPaddle.getSize().y <= windowSize.y)
+            {
+                leftPaddle.move(0, paddleMovement);
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            if(currentRightY - paddleMovement >= 0)
+            {
+                rightPaddle.move(0, -paddleMovement);
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            if(currentRightY + paddleMovement + rightPaddle.getSize().y <= windowSize.y)
+            {
+                rightPaddle.move(0, paddleMovement);
+            }
+        }
+
         window.clear();
+        
+        window.draw(leftPaddle);
+        window.draw(rightPaddle);
 
         window.display();
     }
@@ -64,7 +105,13 @@ void Game::play()
 std::ostream& operator <<(std::ostream& os, const Game& game)
 {
     os<<"Window Information\n";
-    os<<game.window;
+    os<<game.window<<'\n';
+
+    os<<"Left Paddle Information\n";
+    os<<game.leftPaddle<<'\n';
+
+    os<<"Right Paddle Information\n";
+    os<<game.rightPaddle;
 
     return os;
 }
