@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 Game::Game(unsigned int width, unsigned int height)
-:window("Pong", width, height)
+:window("Pong", width, height), leftPaddle(0, 0, width / 35.f, height / 3.f), rightPaddle(width - (width / 35.f), 0, width / 35.f, height / 3.f)
 {
 
 }
@@ -56,6 +56,9 @@ void Game::play()
         }
 
         window.clear();
+        
+        window.draw(leftPaddle);
+        window.draw(rightPaddle);
 
         window.display();
     }
@@ -64,7 +67,13 @@ void Game::play()
 std::ostream& operator <<(std::ostream& os, const Game& game)
 {
     os<<"Window Information\n";
-    os<<game.window;
+    os<<game.window<<'\n';
+
+    os<<"Left Paddle Information\n";
+    os<<game.leftPaddle<<'\n';
+
+    os<<"Right Paddle Information\n";
+    os<<game.rightPaddle;
 
     return os;
 }

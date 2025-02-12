@@ -3,6 +3,7 @@
 
 int main(int argc, char** argv)
 {
+    srand((unsigned int)time(nullptr));
     if(argc != 3)
     {
         std::cerr<<"Usage: "<<argv[0]<<" <width> <height>\n";
