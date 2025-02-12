@@ -1,6 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <SFML/Window/Keyboard.hpp>
 #include <SFML/System/Vector2.hpp>
 #include "Window.hpp"
 #include "Paddle.hpp"

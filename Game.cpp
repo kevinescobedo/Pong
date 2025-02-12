@@ -55,6 +55,44 @@ void Game::play()
             }
         }
 
+        const sf::Vector2u windowSize = window.getSize();
+        float paddleMovement = windowSize.y / 20.f;
+
+        float currentLeftY = leftPaddle.getPosition().y;
+        float currentRightY = rightPaddle.getPosition().y;
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            if(currentLeftY - paddleMovement >= 0)
+            {
+                leftPaddle.move(0, -paddleMovement);
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            if(currentLeftY + paddleMovement + leftPaddle.getSize().y <= windowSize.y)
+            {
+                leftPaddle.move(0, paddleMovement);
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            if(currentRightY - paddleMovement >= 0)
+            {
+                rightPaddle.move(0, -paddleMovement);
+            }
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            if(currentRightY + paddleMovement + rightPaddle.getSize().y <= windowSize.y)
+            {
+                rightPaddle.move(0, paddleMovement);
+            }
+        }
+
         window.clear();
         
         window.draw(leftPaddle);
