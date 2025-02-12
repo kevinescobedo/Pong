@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <random>
+#include <cstdint>
 
 class Paddle: public sf::RectangleShape
 {
